@@ -1,0 +1,55 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:context="http://www.springframework.org/schema/context"
+   xmlns:util="http://www.springframework.org/schema/util"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/util
+ 	http://www.springframework.org/schema/util/spring-util.xsd">
+ 
+	<bean id = "organization" class="com.capgemini.spring.component.Organization">
+		<constructor-arg index = "0" value = "001"/>
+		<constructor-arg index = "1" value = "Capgemini"/>
+		<constructor-arg index = "2" value = "200000"/>
+		<constructor-arg index = "3" ref = "location"/>
+		<constructor-arg index = "4">  
+  			<list>  
+   				<value>John Doe</value>  
+   				<value>Anna</value>  
+  				<value>Grant</value>  
+  			</list>  
+ 
+		</constructor-arg>
+	 	<constructor-arg index = "5">  
+  	  		<set>  
+   				<value>Pune</value>  
+   				<value>Mumbai</value>  
+   				<value>Banglore</value>  
+ 	 		 </set>  
+ 		</constructor-arg> 
+
+		<constructor-arg index = "6">  
+  		<map>  
+   			<entry key="1" value="Mrunal"/>
+   			<entry key="2" value="Aayush"/>
+  			<entry key="3" value="Prangshu"/>
+  		</map>  
+ 	</constructor-arg>
+
+ 	<constructor-arg index = "7" ref="myProperties1"/>
+ 	<constructor-arg index = "8" ref="myProperties2"/>
+
+    
+	</bean>
+
+	<util:properties id="myProperties1" location="ipAddress.properties"/>
+	<util:properties id="myProperties2" location="database.properties"/>
+
+	<bean id = "location" class="com.capgemini.spring.component.Address">
+		<constructor-arg index = "0" value = "Mumbai"/>
+		<constructor-arg index = "1" value = "Maharashtra"/>
+	</bean>
+
+	
+</beans>
